@@ -9,11 +9,11 @@ router.post("/forgot-password", sendOTP);
 router.post("/verify-otp", verifyOTPAndResetPassword);
 
 router.get("/notifications", auth, async (req, res) => {
-  const user = await User.findById(req.userId)
-    .populate("notifications.photo", "caption")
-    .populate("notifications.fromUser", "username");
+ const user = await User.findById(req.userId)
+ .populate("notifications.photo", "caption")
+ .populate("notifications.fromUser", "username");
 
-  res.json(user.notifications.reverse());
+ res.json(user.notifications.reverse());
 });
 
 module.exports = router;

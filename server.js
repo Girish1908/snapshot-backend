@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const userRoutes = require("./routes/UserRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
@@ -24,6 +25,7 @@ app.use((err, req, res, next) => {
   next(err);
 });
 app.use("/api/auth", authRoutes);
+app.use("/api/contact", contactRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
